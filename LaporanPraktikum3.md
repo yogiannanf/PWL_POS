@@ -72,3 +72,24 @@ memiliki foreign key
 
 9. Laporkan hasil Praktikum-2.1 ini dan commit perubahan pada git.
 
+### **Praktikum Praktikum 2.2 - Pembuatan file migrasi dengan relasi**:
+
+1. Buka terminal VSCode kalian, dan buat file migrasi untuk table m_user
+
+<img src = img/prak3_no1.png>
+
+2. Buka file migrasi untuk table m_user, dan modifikasi seperti berikut
+
+<img src = img/prak3_no2.png>
+
+3. Simpan kode program Langkah 2, dan jalankan perintah php artisan migrate. Amati
+apa yang terjadi pada database.
+
+4. Buat table database dengan migration untuk table-tabel yang memiliki foreign key
+
+| m_barang |
+|---|
+| t_penjualan |
+| t_stok |
+| t_penjualan_detail |
+
