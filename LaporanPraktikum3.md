@@ -93,3 +93,36 @@ apa yang terjadi pada database.
 | t_stok |
 | t_penjualan_detail |
 
+<img src = img/prak2.2_no4a.png>
+
+<img src = img/prak2.2_no4b.png>
+
+<img src = img/prak2.2_no4c.png>
+
+<img src = img/prak2.2_no4d.png>
+
+<img src = img/prak2.2_no4e.png>
+
+<img src = img/prak2.2_no4f.png>
+
+<img src = img/prak2.2_no4g.png>
+
+<img src = img/prak2.2_no4h.png>
+
+<img src = img/prak2.2_no4i.png>
+
+<img src = img/prak2.2_no4j.png>
+
+<img src = img/prak2.2_no4k.png>
+
+<img src = img/prak2.2_no4l.png>
+
+5. Jika semua file migrasi sudah di buat dan dijalankan maka bisa kita lihat tampilan
+designer pada phpMyAdmin seperti berikut
+
+<img src = img/prak2.2_no5.png>
+
+### **C. SEEDER**:
+### **Praktikum 3 – Membuat file seeder**:
+
+1. Kita akan membuat file seeder untuk table m_level dengan mengetikkan perintah
