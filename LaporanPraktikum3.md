@@ -126,3 +126,35 @@ designer pada phpMyAdmin seperti berikut
 ### **Praktikum 3 – Membuat file seeder**:
 
 1. Kita akan membuat file seeder untuk table m_level dengan mengetikkan perintah
+
+<img src = img/prak3.1_no1.png>
+
+2. Selanjutnya, untuk memasukkan data awal, kita modifikasi file tersebut di dalam
+function run()
+
+<img src = img/prak3.1_no2.png>
+
+3. Selanjutnya, kita jalankan file seeder untuk table m_level pada terminal
+
+<img src = img/prak3.1_no3.png>
+
+4. Ketika seeder berhasil dijalankan maka akan tampil data pada table m_level
+
+<img src = img/prak3.1_no4.png>
+
+5. Sekarang kita buat file seeder untuk table m_user yang me-refer ke table m_level
+
+<img src = img/prak3.1_no5.png>
+
+6. Modifikasi file class UserSeeder seperti berikut 
+
+7. Jalankan perintah untuk mengeksekusi class UserSeeder
+
+8. Perhatikan hasil seeder pada table m_user
+
+9. Ok, data seeder berhasil di masukkan ke database.
+
+10. Sekarang coba kalian masukkan data seeder untuk table yang lain, dengan ketentuan
+seperti berikut
+
+11. Jika sudah, laporkan hasil Praktikum-3 ini dan commit perubahan pada git
