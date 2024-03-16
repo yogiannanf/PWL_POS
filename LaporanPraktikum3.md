@@ -148,13 +148,27 @@ function run()
 
 6. Modifikasi file class UserSeeder seperti berikut 
 
+<img src = img/prak3.1_no6.png>
+
 7. Jalankan perintah untuk mengeksekusi class UserSeeder
 
+<img src = img/prak3.1_no7.png>
+
 8. Perhatikan hasil seeder pada table m_user
+
+<img src = img/prak3.1_no8.png>
 
 9. Ok, data seeder berhasil di masukkan ke database.
 
 10. Sekarang coba kalian masukkan data seeder untuk table yang lain, dengan ketentuan
 seperti berikut
+
+<img src = img/prak3.1_no10a.png>
+
+<img src = img/prak3.1_no10b.png>
+
+<img src = img/prak3.1_no10c.png>
+
+
 
 11. Jika sudah, laporkan hasil Praktikum-3 ini dan commit perubahan pada git
