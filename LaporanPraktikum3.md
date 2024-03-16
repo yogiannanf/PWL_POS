@@ -37,8 +37,6 @@
 
 1. Buka terminal VSCode kalian, untuk yang di kotak merah adalah default dari laravel
 
-<img src = img/prak2_no1.png>
-
 2. Kita abaikan dulu yang di kotak merah (jangan di hapus)
 
 3. Kita buat file migrasi untuk table m_level dengan perintah
