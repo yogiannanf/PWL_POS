@@ -91,11 +91,15 @@ apa yang terjadi pada database.
 | t_stok |
 | t_penjualan_detail |
 
+- Create m_barang
+
 <img src = img/prak2.2_no4a.png>
 
 <img src = img/prak2.2_no4b.png>
 
 <img src = img/prak2.2_no4c.png>
+
+- Create t_penjualan
 
 <img src = img/prak2.2_no4d.png>
 
@@ -103,11 +107,15 @@ apa yang terjadi pada database.
 
 <img src = img/prak2.2_no4f.png>
 
+- Create t_stok
+
 <img src = img/prak2.2_no4g.png>
 
 <img src = img/prak2.2_no4h.png>
 
 <img src = img/prak2.2_no4i.png>
+
+- Create t_penjualan_diskon
 
 <img src = img/prak2.2_no4j.png>
 
@@ -158,14 +166,179 @@ function run()
 
 9. Ok, data seeder berhasil di masukkan ke database.
 
-10. Sekarang coba kalian masukkan data seeder untuk table yang lain, dengan ketentuan
-seperti berikut
+10. Sekarang coba kalian masukkan data seeder untuk table yang lain, dengan ketentuan seperti berikut
+
+| No | Nama Tabel | Jumlah Data | Keterangan |
+|---| --- | ---| ---|
+| 1 | m_kategori | 5 | 5 kategori barang |
+| 2 | m_barang | 10 | 10 barang yang berbeda |
+| 3 | t_stok | 10 | Stok untuk 10 barang |
+| 4 | t_penjualan | 10 | 10 transaksi penjualan |
+| 5 | t_penjualan_detail | 30 | 3 barang untuk setiap transaksi penjualan |
+
+- Insert tabel m_kategori
 
 <img src = img/prak3.1_no10a.png>
 
+```php
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class KategoriSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $data = [
+            [
+                'kategori_id' => 1,
+                'kategori_kode' => 'YN001',
+                'kategori_nama' => 'Furniture ruang tamu',
+            ],
+            [
+                'kategori_id' => 2,
+                'kategori_kode' => 'YN002',
+                'kategori_nama' => 'Furniture kamar tidur',
+            ],
+            [
+                'kategori_id' => 3,
+                'kategori_kode' => 'YN003',
+                'kategori_nama' => 'Furniture ruang makan',
+            ],
+            [
+                'kategori_id' => 4,
+                'kategori_kode' => 'YN004',
+                'kategori_nama' => 'Furniture dapur',
+            ],
+            [
+                'kategori_id' => 5,
+                'kategori_kode' => 'YN005',
+                'kategori_nama' => 'Furniture ruang kerja',
+            ],
+        ];
+        DB::table('m_kategori')->insert($data);
+    }
+}
+```
 <img src = img/prak3.1_no10b.png>
 
+- Insert tabel m_barang
+
 <img src = img/prak3.1_no10c.png>
+
+```php
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class BarangSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $data = [
+            [
+                'barang_id' => 1,
+                'kategori_id' => 1,
+                'barang_kode' => '011',
+                'barang_nama' => 'Sofa',
+                'harga_beli' => 1000000,
+                'harga_jual' => 2500000,
+            ],
+            [
+                'barang_id' => 2,
+                'kategori_id' => 1,
+                'barang_kode' => '012',
+                'barang_nama' => 'Hiasan Dinding',
+                'harga_beli' => 600000,
+                'harga_jual' => 1000000,
+            ],
+            [
+                'barang_id' => 3,
+                'kategori_id' => 2,
+                'barang_kode' => '021',
+                'barang_nama' => 'Kasur',
+                'harga_beli' => 1500000,
+                'harga_jual' => 2000000,
+            ],
+            [
+                'barang_id' => 4,
+                'kategori_id' => 2,
+                'barang_kode' => '022',
+                'barang_nama' => 'Lemari',
+                'harga_beli' => 3000000,
+                'harga_jual' => 5000000,
+            ],
+            [
+                'barang_id' => 5,
+                'kategori_id' => 3,
+                'barang_kode' => '031',
+                'barang_nama' => 'Piring',
+                'harga_beli' => 100000,
+                'harga_jual' => 150000,
+            ],
+            [
+                'barang_id' => 6,
+                'kategori_id' => 3,
+                'barang_kode' => '032',
+                'barang_nama' => 'Gelas',
+                'harga_beli' => 100000,
+                'harga_jual' => 155000,
+            ],
+            [
+                'barang_id' => 7,
+                'kategori_id' => 4,
+                'barang_kode' => '041',
+                'barang_nama' => 'Kompor Elektric',
+                'harga_beli' => 800000,
+                'harga_jual' => 1500000,
+            ],
+            [
+                'barang_id' => 8,
+                'kategori_id' => 4,
+                'barang_kode' => '042',
+                'barang_nama' => 'Wastafel',
+                'harga_beli' => 300000,
+                'harga_jual' => 700000,
+            ],
+            [
+                'barang_id' => 9,
+                'kategori_id' => 5,
+                'barang_kode' => '051',
+                'barang_nama' => 'Meja',
+                'harga_beli' => 800000,
+                'harga_jual' => 1050000,
+            ],
+            [
+                'barang_id' => 10,
+                'kategori_id' => 5,
+                'barang_kode' => '052',
+                'barang_nama' => 'Lampu',
+                'harga_beli' => 500000,
+                'harga_jual' => 700000,
+            ],
+        ];
+        DB::table('m_barang')->insert($data);
+    }
+}
+```
+<img src = img/prak3.1_no10d.png>
+
 
 
 
