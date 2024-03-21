@@ -11,8 +11,24 @@ class UserController extends Controller
 {
     public function index()
     {
+        $user = UserModel::findor(20, ['username', 'nama'], function(){
+            abort(404);
+        });
+
+        return view('user', ['data' => $user]);
+
+        /** 2.1 nomor 4
+        * $user = UserModel::where('level_id', 1)->first();
+        * return view('user', ['data' => $user]);
+        */
+
+        /** 2.1 nomor 1
+        * $user = UserModel::find(1);
+        * return view('user', ['data' => $user]);
+        */
+
     // tambah data user dengan Eloquent Model
-    $data = [
+    /**$data = [
         'level_id' => 2,
         'username' => 'manager_tiga',
         'nama' => 'Manager 3',
@@ -26,6 +42,7 @@ class UserController extends Controller
         // 'level_id' => 4
     ];
     UserModel::create($data);
+    */
 
     //jobsheet3
     //UserModel::where('username', 'customer-1')->update($data); //update data user
