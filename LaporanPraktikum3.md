@@ -339,7 +339,169 @@ class BarangSeeder extends Seeder
 ```
 <img src = img/prak3.1_no10d.png>
 
+<img src = img/prak3.1_no10f.png>
 
+- Insert tabel t_stok
 
+<img src = img/prak3.1_no10g.png>
+
+```php
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class StokSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $data = [
+            [
+                'stok_id' => 111,
+                'barang_id' => 1,
+                'user_id' => 1,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 25,
+            ],
+            [
+                'stok_id' => 112,
+                'barang_kode' => 2,
+                'user_id' => 2,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 30,
+            ],
+            [
+                'stok_id' => 113,
+                'barang_kode' => 3,
+                'user_id' => 3,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 17,
+            ],
+            [
+                'stok_id' => 114,
+                'barang_kode' => 4,
+                'user_id' => 1,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 30,
+            ],[
+                'stok_id' => 115,
+                'barang_kode' => 5,
+                'user_id' => 2,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 32,
+            ],
+            [
+                'stok_id' => 116,
+                'barang_kode' => 6,
+                'user_id' => 1,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 18,
+            ],
+            [
+                'stok_id' => 117,
+                'barang_kode' => 7,
+                'user_id' => 3,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 19,
+            ],
+            [
+                'stok_id' => 118,
+                'barang_kode' => 8,
+                'user_id' => 1,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 15,
+            ],
+            [
+                'stok_id' => 119,
+                'barang_kode' => 9,
+                'user_id' => 2,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 30,
+            ],
+            [
+                'stok_id' => 121,
+                'barang_kode' => 10,
+                'user_id' => 2,
+                'stok_tanggal' => '2024-02-25',
+                'stok_jumlah' => 35,
+            ],
+        ];
+        DB::table('t_stok')->insert($data);
+    }
+}
+```
 
 11. Jika sudah, laporkan hasil Praktikum-3 ini dan commit perubahan pada git
+
+
+### **G. Penutup**:
+
+Jawablah pertanyaan berikut sesuai pemahaman materi di atas
+1. Pada Praktikum 1 - Tahap 5, apakah fungsi dari APP_KEY pada file setting .env Laravel?
+Jawab : 
+Dalam Laravel, `APP_KEY` dalam file `.env` berfungsi sebagai kunci enkripsi yang digunakan untuk mengamankan data sensitif dalam aplikasi.
+
+2. Pada Praktikum 1, bagaimana kita men-generate nilai untuk APP_KEY?
+Jawab :
+- Pertama dengan mebuka folder PWL_POS
+- Selanjutnya membuka new terminal
+- Dan ketikan peritah ‘php artisan key:generate’ pada terminal yang sudah anda buka
+- Maka secara otomatis akan menghasilkan nilai APP_KEY yang unik dan di atur pada file.env
+
+3. Pada Praktikum 2.1 - Tahap 1, secara default Laravel memiliki berapa file migrasi? dan untuk apa saja file migrasi tersebut?
+Jawab :
+a. create_users_table.php: Membuat tabel `users` untuk menyimpan informasi pengguna seperti nama, email, dan kata sandi.
+b. create_password_resets_tokens_table.php: Membuat tabel `password_resets` untuk menyimpan token reset kata sandi yang dikirimkan kepada pengguna yang lupa kata
+sandi mereka.
+c. create_failed_jobs_table.php: Membuat tabel `failed_jobs` untuk menyimpan informasi tentang pekerjaan yang gagal dieksekusi dalam sistem antrian Laravel.
+sehingga pengembang dapat menelusuri dan memperbaiki kesalahan tersebut.
+d. create_personal_access_tokens_table.php: Membuat tabel `personal_access_tokens` untuk mengelola token akses pribadi dalam autentikasi API menggunakan Laravel Passport. Tabel ini menyimpan informasi tentang token akses pribadi yang diterbitkan
+untuk setiap pengguna.
+
+4. Secara default, file migrasi terdapat kode $table->timestamps();, apa tujuan/output dari fungsi tersebut?
+Jawab : 
+Fungsi `$table->timestamps()` secara singkat adalah untuk menambahkan dua kolom ke tabel: `created_at` dan `updated_at`.
+a. Kolom `created_at` menyimpan waktu rekaman dibuat.
+b. Kolom `updated_at` menyimpan waktu rekaman terakhir diperbarui.
+
+5. Pada File Migrasi, terdapat fungsi $table->id(); Tipe data apa yang dihasilkan dari fungsi tersebut?
+Jawab :
+Fungsi `$table->id();` dalam file migrasi Laravel menghasilkan kolom dengan tipe data integer yang bertambah secara otomatis (auto-increment), yang bertindak sebagai primary key untuk tabel yang dibuat dengan migrasi tersebut.
+
+6. Apa bedanya hasil migrasi pada table m_level, antara menggunakan $table->id(); dengan menggunakan $table->id('level_id'); ?
+Jawab :
+Dengan menggunakan $table->id();, Laravel secara otomatis memberikan nama id, sementara dengan $table->id('level_id');, dapat menentukan nama kolom primary key yaitu level_id.
+
+7. Pada migration, Fungsi ->unique() digunakan untuk apa?
+Jawab :
+Digunakan dalam file migrasi Laravel untuk menetapkan bahwa nilai dalam sebuah kolom harus unik di dalam tabel, sehingga mencegah duplikasi data dalam kolom tersebut.
+
+8. Pada Praktikum 2.2 - Tahap 2, kenapa kolom level_id pada tabel m_user
+menggunakan $tabel->unsignedBigInteger('level_id'), sedangkan kolom level_id pada tabel m_level menggunakan $tabel->id('level_id') ?
+Jawab :
+Kolom `level_id` pada tabel `m_user` menggunakan `$table-
+>unsignedBigInteger('level_id')` karena digunakan untuk kunci asing (foreign key). Sedangkan tabel m_level menggunakan $tabel->id('level_id') untuk primary key.
+
+9. Pada Praktikum 3 - Tahap 6, apa tujuan dari Class Hash? dan apa maksud dari kode program Hash::make('1234');?
+Jawab :
+Class `Hash` dalam Laravel digunakan untuk mengacak dan memverifikasi kata sandi pengguna. `Hash::make('1234');` menghasilkan nilai teracak dari string `'1234'` yang dapat digunakan sebagai kata sandi terenkripsi sebelum disimpan dalam database.
+
+
+10. Pada Praktikum 4 - Tahap 3/5/7, pada query builder terdapat tanda tanya (?), apa kegunaan dari tanda tanya (?) tersebut?
+Jawab :
+Tanda tanya ? dalam query builder digunakan untuk menandai tempat di mana nilai parameter akan digunakan saat query dieksekusi.
+
+11. Pada Praktikum 6 - Tahap 3, apa tujuan penulisan kode protected $table = ‘m_user’; dan protected $primaryKey = ‘user_id’; ?
+Jawab :
+Properti `$table` digunakan untuk menentukan nama tabel terkait dengan model, sedangkan properti `$primaryKey` digunakan untuk menentukan nama kolom primary key dari tabel tersebut. Dengan menentukan properti ini Laravel dapat menghubungkan model dengan tabel yang benar dalam database dengan mudah.
+
+12. Menurut kalian, lebih mudah menggunakan mana dalam melakukan operasi CRUD ke database (DB Façade / Query Builder / Eloquent ORM) ? jelaskan
+Jawab : 
+Menggunakan DB Façade, karena dalam Laravel lebih mudah karena menyediakan sintaks yang sederhana dan tidak memerlukan penggunaan model. Bisa menulis query SQL secara langsung.
