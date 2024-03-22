@@ -4,21 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\UserModel;
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Hash as FacadesHash;
+use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $user = UserModel :: create([
-        'username' => 'manager11',
-        'nama' => 'Manager11',
-        'password' => Hash::make('12345'),
-        'level_id' => 2,
-    ]);
+        $user = UserModel::all();
+        return view('user', ['data' => $user]);
+    }
 
-        $user->username = 'manager12';
+    public function tambah()
+    {
+        return view('user_tambah');
+    }
+
+    public function tambah_simpan(Request $request)
+    {
+        UserModel::create([
+            'username' => $request->username,
+            'nama' => $request->nama,
+            'password' => Hash::make('request->password'),
+            'level_id' => $request->level_id
+        ]);
+
+        return redirect('/user');
+    }
+    //   $user = UserModel :: create([
+    //     'username' => 'manager11',
+    //     'nama' => 'Manager11',
+    //     'password' => Hash::make('12345'),
+    //     'level_id' => 2,
+    // ]);
+
+    //     $user->username = 'manager12';
 
         // $user->isDirty(); // true
         // $user->isDirty('username'); // true
@@ -30,11 +50,11 @@ class UserController extends Controller
         // $user->isClean('nama'); // true
         // $user->isClean(['nama', 'username']); // false
         
-        $user->save();
+        // $user->save();
 
-        $user->isDirty(); // false
-        $user->isClean(); // true
-        dd($user->wasChanged(['nama', 'username'])); // true
+        // $user->isDirty(); // false
+        // $user->isClean(); // true
+        // dd($user->wasChanged(['nama', 'username'])); // true
         //dd($user->isDirty());
 
     // public function index()
@@ -103,5 +123,5 @@ class UserController extends Controller
     // return view('user', ['data' => $user]);
     // }
     
-    }
+    //}
 }
