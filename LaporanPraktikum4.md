@@ -664,7 +664,7 @@ class UserController extends Controller
 ```php
     <body>
         <h1>Form Tambah Data User</h1>
-        <form method="post" action="/user/tambah_simpan"></form>
+        <form method="post" action="tambah_simpan"></form>
 
         {{ csrf_field() }}
 
