@@ -27,6 +27,6 @@ Route::get('/kategori', [KategoriController::class, 'index']);
 
 Route::get('/user', [ControllersUserController::class, 'index']);
 
-Route::get('user/tambah', [ControllersUserController::class, 'tambah']);
+Route::get('/user/tambah', [ControllersUserController::class, 'tambah']);
 
 Route::post('/user/tambah_simpan', [ControllersUserController::class, 'tambah_simpan']);

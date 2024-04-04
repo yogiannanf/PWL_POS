@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Tambah Data user</title>
-    </head>
-
     <body>
         <h1>Form Tambah Data User</h1>
-        <form method="post" action="/user/tambah_simpan"></form>
+        <form method="post" action="/user/tambah_simpan">
 
         {{ csrf_field() }}
 
@@ -23,5 +19,6 @@
         <input type="number" name="level_id" placeholder="Masukan ID Level">
         <br><br>
         <input type="submit" class="btn btn-success" value="Simpan">
+        </form>
     </body>
 </html>

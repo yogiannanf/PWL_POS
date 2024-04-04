@@ -31,6 +31,7 @@ class UserController extends Controller
 
         return redirect('/user');
     }
+    
     //   $user = UserModel :: create([
     //     'username' => 'manager11',
     //     'nama' => 'Manager11',
