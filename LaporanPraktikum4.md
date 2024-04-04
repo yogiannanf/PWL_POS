@@ -739,8 +739,27 @@ bawah method tambah seperti gambar di bawah ini
 
 10. Simpan kode program Langkah 8 dan 9. Kemudian jalankan link localhost:8000/user/tambah atau localhost/PWL_POS/public/user/tambah pada browser dan input formnya dan simpan, kemudian amati apa yang terjadi dan beri penjelasan dalam laporan
 
+    Jawab : 
+
+    - File Controller UserController.php
+    Method tambah_simpan ditambahkan untuk:
+    Menerima data request dari form.
+    Menyimpan data user baru ke database menggunakan UserModel::create.
+    Hash password sebelum disimpan.
+    Mengalihkan kembali ke halaman user setelah data disimpan.
+
+    - Hasil pada Browser
+    Ketika form tambah data user diisi dan tombol "Simpan" diklik, data user baru akan disimpan ke database.
+    Pengguna akan dialihkan ke halaman user yang menampilkan daftar user yang telah diperbarui.
+
+<img src = imgjobsheet4/prak2.6_no10a.png>
+
+<img src = imgjobsheet4/prak2.6_no10b.png>
+
 11. Langkah berikutnya membuat update atau ubah data user dengan cara bikin file baru pada view dengan nama user_ubah.blade.php dan buat scriptnya menjadi seperti di
 bawah ini
+
+
 
 12. Tambahkan script pada routes dengan nama file web.php. Tambahkan seperti gambar di bawah ini
 
