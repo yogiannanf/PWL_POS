@@ -10,7 +10,6 @@
                 <th>Nama</th>
                 <th>ID Level Pengguna</th>
                 <th>Aksi</th>
-                {{--<th>Jumlah Pengguna</th>--}}
             </tr>
             @foreach ($data as $d)
             <tr>
@@ -19,7 +18,6 @@
                 <td>{{ $d->nama }}</td>
                 <td>{{ $d->level_id }}</td>
                 <td><a href="/user/ubah/{{ $d->user_id }}">Ubah</a> | <a href="/user/hapus/{{ $d->user_id }}">Hapus</a></td>
-                {{--<td>{{ $data }}</td>--}}
             </tr>
             @endforeach
         </table>
