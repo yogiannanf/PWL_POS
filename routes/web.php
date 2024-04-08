@@ -29,7 +29,7 @@ Route::get('/user', [ControllersUserController::class, 'index']);
 
 Route::get('/user/tambah', [ControllersUserController::class, 'tambah']);
 
-Route::post('/user/tambah_simpan', [ControllersUserController::class, 'tambah_simpan']);
+Route::put('/user/tambah_simpan', [ControllersUserController::class, 'tambah_simpan']);
 
 Route::get('/user/ubah/{id}', [ControllersUserController::class, 'ubah']);
 

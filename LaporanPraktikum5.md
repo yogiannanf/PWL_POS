@@ -146,6 +146,20 @@ Untuk menggunakan blade template ini cukup dengan extend AdminLTE layout dengan 
 
 ### **Praktikum 2 – Integrasi dengan DataTables**:
 
+1. Install Laravel DataTables
+
+<img src = imgjobsheet5/prak2_no1.png>
+
+<img src = imgjobsheet5/prak2_no1a.png>
+
+2. Pastikan nodejs sudah terinstall, dengan perintah npm -v. 
+
+<img src = imgjobsheet5/prak2_no2.png>
+
+3. Install Laravel DataTables Vite dan sass
+
+
+
 ### **Praktikum 3 – Membuat form kemudian menyimpan data dalam database**:
 
 ### **Tugas Praktikum**:

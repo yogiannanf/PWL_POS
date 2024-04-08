@@ -2,8 +2,8 @@
 <html>
     <body>
         <h1>Form Ubah Data User</h1>
-        <a href="{{route('/user')}}">Kembali</a>
-        <form method="post" action="PWL_POS/public/user/ubah_simpan/{{$data->user_id)}}">
+        <a href="/user">Kembali</a>
+        <form method="post" action="/user/ubah_simpan/{{ $data->user_id }}">
             
             {{ csrf_field() }}
             {{ method_field('PUT') }}

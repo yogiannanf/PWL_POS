@@ -756,31 +756,135 @@ bawah method tambah seperti gambar di bawah ini
 
 <img src = imgjobsheet4/prak2.6_no10b.png>
 
-11. Langkah berikutnya membuat update atau ubah data user dengan cara bikin file baru pada view dengan nama user_ubah.blade.php dan buat scriptnya menjadi seperti di
-bawah ini
+11. Langkah berikutnya membuat update atau ubah data user dengan cara bikin file baru pada view dengan nama user_ubah.blade.php dan buat scriptnya menjadi seperti di bawah ini
 
+```php
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Form Ubah Data User</h1>
+        <a href="/user">Kembali</a>
+        <form method="post" action="/user/ubah_simpan/{{ $data->user_id }}">
+            
+            {{ csrf_field() }}
+            {{ method_field('PUT') }}
 
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Masukan Username" value="{{ $data->username }}">
+            <br>
+            <label>Nama</label>
+            <input type="text" name="nama" placeholder="Masukan Nama" value="{{ $data->username }}">
+            <br>
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Masukan Password" value="{{ $data->password }}">
+            <br>
+            <label>Level ID</label>
+            <input type="number" name="level_id" placeholder="Masukan ID Level" value="{{ $data->level_id }}">
+            <br><br>
+            <input type="submit" class="btn btn-success" value="Ubah">
+
+        </form>
+    </body>
+</html>
+```
 
 12. Tambahkan script pada routes dengan nama file web.php. Tambahkan seperti gambar di bawah ini
+
+```php
+Route::get('/user/ubah/{id}', [ControllersUserController::class, 'ubah']);
+```
 
 13. Tambahkan script pada controller dengan nama file UserController.php. Tambahkan script dalam class dan buat method baru dengan nama ubah dan diletakan di bawah
 method tambah_simpan seperti gambar di bawah ini
 
+```php
+public function ubah($id)
+    {
+        $user = UserModel::find($id);
+        return view('user_ubah', ['data' => $user]);
+    }
+```
+
 14. Simpan kode program Langkah 11 sd 13. Kemudian jalankan pada browser dan klik link “Ubah” amati apa yang terjadi dan beri penjelasan dalam laporan
 
+<img src = imgjobsheet4/prak2.6_no14.png>
+
+diubah menjadi seperti ini
+
+<img src = imgjobsheet4/prak2.6_no14a.png>
+
+Ketika link "Ubah" diklik, browser akan diarahkan ke halaman user_ubah.blade.php.
+Halaman tersebut menampilkan formulir dengan data user yang ingin diubah.
+Pengguna dapat mengisi formulir dan klik "Ubah" untuk menyimpan perubahan data user.
+
 15. Tambahkan script pada routes dengan nama file web.php. Tambahkan seperti gambar di bawah ini
+
+```php
+Route::put('/user/ubah_simpan/{id}', [ControllersUserController::class, 'ubah_simpan']);
+```
 
 16. Tambahkan script pada controller dengan nama file UserController.php. Tambahkan script dalam class dan buat method baru dengan nama ubah_simpan dan diletakan di
 bawah method ubah seperti gambar di bawah ini
 
+```php
+public function ubah_simpan($id, Request $request)
+    {
+        $user = UserModel::find($id);
+
+        $user->username = $request->username;
+        $user->nama = $request->nama;
+        $user->password = Hash::make('$request->password');
+        $user->level_id = $request->level_id;
+
+        $user->save();
+
+        return redirect('/user');
+    }
+```
+
 17. Simpan kode program Langkah 15 dan 16. Kemudian jalankan link localhost:8000/user/ubah/1 atau localhost/PWL_POS/public/user/ubah/1 pada browser dan ubah input formnya dan klik tombol ubah, kemudian amati apa yang terjadi dan beri penjelasan dalam laporan
 
+Jawab : hasilnya
+
+<img src = imgjobsheet4/prak2.6_no14b.png>
+
+Script di atas menunjukkan cara untuk membuat form ubah data user dengan Laravel. Script ini menggunakan resource routing dan method PUT untuk memperbarui data user di database.
+
 18. Berikut untuk langkah delete . Tambahkan script pada routes dengan nama file web.php.Tambahkan seperti gambar di bawah ini
+
+```php
+Route::get('/user/hapus/{id}', [ControllersUserController::class, 'hapus']);
+```
 
 19. Tambahkan script pada controller dengan nama file UserController.php. Tambahkan script dalam class dan buat method baru dengan nama hapus dan diletakan di bawah
 method ubah_simpan seperti gambar di bawah ini
 
+```php
+public function hapus($id)
+    {
+        $user = UserModel::find($id);
+        $user->delete();
+
+        return redirect('/user');
+    }
+```
+
 20. Simpan kode program Langkah 18 dan 19. Kemudian jalankan pada browser dan klik tombol hapus, kemudian amati apa yang terjadi dan beri penjelasan dalam laporan
+
+Jawab : 
+
+tabel sebelumnya
+
+<img src = imgjobsheet4/prak2.6_no14b.png>
+
+setelah di pilih hapus
+
+<img src = imgjobsheet4/prak2.6_no20.png>
+
+Script di atas menunjukkan cara untuk menghapus data user dengan Laravel. Script ini menggunakan method GET dan delete() untuk menghapus data user dari database.
+
+- Ketika tombol "Hapus" diklik, browser akan diarahkan ke route /user/hapus/{id}.
+- Method hapus akan dijalankan dan data user dengan id tersebut akan dihapus dari database.
 
 ### **Praktikum 2.7 – Relationships**:
 

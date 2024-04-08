@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Monolog\Level;
 
 class UserModel extends Model
 {
@@ -19,6 +21,11 @@ class UserModel extends Model
     //protected $fillable = ['level_id', 'username', 'nama'];
 
     protected $fillable = ['level_id', 'username', 'nama', 'password'];
+
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
 
     //Jobsheet 3
     // protected $table = 'm_user'; //Mendefinisikan nama tabel yang digunakan oleh model ini
