@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserModel;
+use App\Models\LevelModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\Support\Facades\Hash;
@@ -63,8 +64,7 @@ class UserController extends Controller
     public function index()
     {
         $user = UserModel::with('level')->get();
-        return view('user', ['data'=> $user]);
-        //dd($user);
+        dd($user);
     }
     
     //   $user = UserModel :: create([
