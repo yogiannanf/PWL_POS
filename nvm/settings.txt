@@ -1,0 +1,2 @@
+root: C:\laragon\www\PWL_POS\nvm
+path: C:\Program Files\nodejs
