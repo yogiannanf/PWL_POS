@@ -37,4 +37,6 @@ Route::put('/user/ubah_simpan/{id}', [ControllersUserController::class, 'ubah_si
 
 Route::get('/user/hapus/{id}', [ControllersUserController::class, 'hapus']);
 
-//Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/kategori/create', [KategoriController::class, 'create']);
+
+Route::post('/kategori', [KategoriController::class, 'store']);
