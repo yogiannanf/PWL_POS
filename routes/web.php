@@ -40,3 +40,10 @@ Route::get('/user/hapus/{id}', [ControllersUserController::class, 'hapus']);
 Route::get('/kategori/create', [KategoriController::class, 'create']);
 
 Route::post('/kategori', [KategoriController::class, 'store']);
+
+//js 5 no 3
+Route::get('/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+Route::put('/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+//--
+//JS 5 no 4
+Route::get('/delete/{id}', [KategoriController::class, 'destroy'])->name('kategori.delete');

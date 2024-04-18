@@ -322,7 +322,14 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
+        // Tugas nomor 2 js 5
         ['header' => 'account_settings'],
+        [
+            'text' => 'Manage Kategori',
+            'url' => 'kategori',
+            'icon' => 'far fa-fw fa-folder',
+        ],
+        //--
         [
             'text' => 'profile',
             'url' => 'admin/settings',

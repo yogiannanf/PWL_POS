@@ -11,10 +11,14 @@
         <div class="card">
             <div class="card-header">Manage Kategori</div>
             <div class="card-body">
+                
                 {{ $dataTable->table() }}
+                <!-- Tambahkan tombol Add -->
+        <a class="btn btn-Primary" href="/kategori/create">+ Add Kategori</a>
             </div>
+              
         </div>
-    </div>
+      
 @endsection
 
 @push('scripts')

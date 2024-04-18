@@ -52,4 +52,29 @@ class KategoriController extends Controller
         ]);
         return redirect('/kategori');
     }
+
+    //JS 5 no 3
+    function edit($id) {
+        // $kategori =KategoriModel::find($id);
+        // return view('kategori.edit', ['data' => $kategori]);
+        // js 5 no 4
+        return view('kategori.edit', ['data' => KategoriModel::find($id)]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $kategori = KategoriModel::find($id);
+        $kategori->kategori_kode = $request->kategori_kode;
+        $kategori->kategori_nama = $request->kategori_nama;
+
+        $kategori->save();
+        return redirect('/kategori');
+    }
+    //--
+    //js 5 no 4
+    function destroy($id) {
+        KategoriModel::find($id)->delete();
+
+        return redirect('/kategori');
+    }
 }

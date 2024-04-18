@@ -166,6 +166,8 @@ Untuk menggunakan blade template ini cukup dengan extend AdminLTE layout dengan 
 
 1. Tambahkan button Add di halam manage kategori, yang mengarah ke create kategori baru
 
+
+
 2. Tambahkan menu untuk halaman manage kategori, di daftar menu navbar
 
 3. Tambahkan action edit di datatables dan buat halaman edit serta controllernya
