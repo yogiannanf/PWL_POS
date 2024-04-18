@@ -890,6 +890,67 @@ Script di atas menunjukkan cara untuk menghapus data user dengan Laravel. Script
 
 1. Buka file model pada UserModel.php dan tambahkan scritpnya menjadi seperti di bawah ini
 
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class UserModel extends Model
+{
+    use HasFactory;
+
+    protected $table = 'm_user';
+    protected $primaryKey = 'user_id';
+
+    protected $fillable = ['level_id', 'username', 'nama', 'password'];
+
+    function level(): BelongsTo {
+        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
+    }
+}
+```
+
 2. Buka file controller pada UserController.php dan ubah method script menjadi seperti di bawah ini
 
+```php
+public function index()
+    {
+        $user = UserModel::with('level')->get();
+        dd($user);
+    }
+```
+
+- Buatlah LevelModel.php
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class LevelModel extends Model
+{
+    use HasFactory;
+
+    protected $table = 'm_level';
+    protected $primaryKey = 'level_id';
+
+    protected $guarded = [];
+
+    public function user()
+    {
+        return $this->hasMany(UserModel::class, 'level_id', 'level_id');
+    }
+}
+```
+
 3. Simpan kode program Langkah 2. Kemudian jalankan link pada browser, kemudian amati apa yang terjadi dan beri penjelasan dalam laporan
+
+<img src = imgjobsheet4/soal3.png>
