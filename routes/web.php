@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 // Route::get('/level', [LevelController::class, 'index']);
 
-// Route::get('/kategori', [KategoriController::class, 'index']);
+
 
 // Route::get('/user', [ControllersUserController::class, 'index']);
 
@@ -38,7 +38,9 @@ Route::get('/', function () {
 
 // Route::get('/user/hapus/{id}', [ControllersUserController::class, 'hapus']);
 
-// Route::get('/kategori/create', [KategoriController::class, 'create']);
+Route::get('/kategori/create', [KategoriController::class, 'create']);
+Route::post('/kategori', [KategoriController::class, 'store']);
+
 
 // Route::post('/kategori', [KategoriController::class, 'store']);
 

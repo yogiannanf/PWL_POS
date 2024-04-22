@@ -6,6 +6,7 @@ use App\DataTables\KategoriDataTable;
 use App\Models\KategoriModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\view;
 use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
@@ -55,10 +56,22 @@ class KategoriController extends Controller
     */
     public function store(Request $request): RedirectResponse 
     {
+
         $validated = $request->validate([
-            'kategori_kode' => 'required',
-            'kategori_nama' => 'required',
+            'kategori_kode' => 'bail|required|max:100',
+            'kategori_nama' => 'required|max:1000',
         ]);
+
+
+        // $validated = $request->validate([
+        //     'kategori_kode' => 'required|max:100',
+        //     'kategori_nama' => 'required|max:1000',
+        // ]);
+
+        // $validated = $request->validate([
+        //     'kategori_kode' => 'required',
+        //     'kategori_nama' => 'required',
+        // ]);
         // KategoriModel::create([
         //     'kategori_kode' => $request->kodeKategori,
         //     'kategori_nama' => $request->namaKategori,
@@ -69,28 +82,30 @@ class KategoriController extends Controller
         return redirect('/kategori');
     }
 
-    //JS 5 no 3
-    function edit($id) {
-        // $kategori =KategoriModel::find($id);
-        // return view('kategori.edit', ['data' => $kategori]);
-        // js 5 no 4
-        return view('kategori.edit', ['data' => KategoriModel::find($id)]);
-    }
+    
 
-    public function update(Request $request, $id)
-    {
-        $kategori = KategoriModel::find($id);
-        $kategori->kategori_kode = $request->kategori_kode;
-        $kategori->kategori_nama = $request->kategori_nama;
+    // //JS 5 no 3
+    // function edit($id) {
+    //     // $kategori =KategoriModel::find($id);
+    //     // return view('kategori.edit', ['data' => $kategori]);
+    //     // js 5 no 4
+    //     return view('kategori.edit', ['data' => KategoriModel::find($id)]);
+    // }
 
-        $kategori->save();
-        return redirect('/kategori');
-    }
-    //--
-    //js 5 no 4
-    function destroy($id) {
-        KategoriModel::find($id)->delete();
+    // public function update(Request $request, $id)
+    // {
+    //     $kategori = KategoriModel::find($id);
+    //     $kategori->kategori_kode = $request->kategori_kode;
+    //     $kategori->kategori_nama = $request->kategori_nama;
 
-        return redirect('/kategori');
-    }
+    //     $kategori->save();
+    //     return redirect('/kategori');
+    // }
+    // //--
+    // //js 5 no 4
+    // function destroy($id) {
+    //     KategoriModel::find($id)->delete();
+
+    //     return redirect('/kategori');
+    // }
 }
