@@ -294,12 +294,16 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
         [
+            'submenu' => [
+            
+        // Navbar items:
+        
             'type' => 'navbar-search',
             'text' => 'search',
             'topnav_right' => true,
-        ],
+        ]
+    ],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
@@ -321,6 +325,14 @@ return [
             'icon' => 'far fa-fw fa-file',
             'label' => 4,
             'label_color' => 'success',
+        ],
+        [
+            'text' => 'm_user',
+            'url' => '/m_user',
+        ],
+        [
+            'text' => 'Level',
+            'url' => '/level',
         ],
         // Tugas nomor 2 js 5
         ['header' => 'account_settings'],
@@ -395,7 +407,6 @@ return [
             'url' => '#',
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Menu Filters

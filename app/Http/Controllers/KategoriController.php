@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\DataTables\KategoriDataTable;
 use App\Models\KategoriModel;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
 {
-    public function index(KategoriDataTable $dataTable)
+    /*public function index(KategoriDataTable $dataTable)
     {
         // $data = [
         //     'kategori_id' => 2,
@@ -37,19 +38,34 @@ class KategoriController extends Controller
         // $data = DB::table('m_kategori')->get();
         // return view('kategori', ['data' => $data]);
 
-        return $dataTable->render('kategori.index');
-    }
+        // return $dataTable->render('kategori.index');
+    }*/
 
+
+    /**
+    * Show the form to create a new post.
+    */
     public function create()
     {
         return view('kategori.create');
     }
 
-    public function store(Request $request){
-        KategoriModel::create([
-            'kategori_kode' => $request->kodeKategori,
-            'kategori_nama' => $request->namaKategori,
+    /*
+    * Store a new post
+    */
+    public function store(Request $request): RedirectResponse 
+    {
+        $validated = $request->validate([
+            'kategori_kode' => 'required',
+            'kategori_nama' => 'required',
         ]);
+        // KategoriModel::create([
+        //     'kategori_kode' => $request->kodeKategori,
+        //     'kategori_nama' => $request->namaKategori,
+        // ]);
+
+        //The post is valid
+
         return redirect('/kategori');
     }
 
