@@ -18,19 +18,30 @@ class M_userControllers extends Controller
 
     public function create()
     {
-        return view('m_user.create');
+        $levels = LevelModel::all();
+        return view('m_user.create', ['levels' => $levels]);
     }
 
     public function store(Request $request)
     {
+        $levels = LevelModel::all();
+
+        $validated = $request->validate([
+            'nama' => 'bail|required|max:100',
+            'level_id' => 'bail|required',
+            'username' => 'bail|required|max:20',
+            'password' => 'bail|required|max:255',
+
+        ]);
+
         UserModel::create([
-            'username' => $request->username,
             'nama' => $request->nama,
             'level_id' => $request->levelId,
+            'username' => $request->username,
             'password' => Hash::make('$request->password')
         ]);
 
-        return redirect('/m_user');
+        return redirect('/level');
     }
 
     public function edit($id)

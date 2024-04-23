@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\LevelModel;
+use Illuminate\Http\RedirectResponse;
+use Monolog\Level;
 
 class LevelController extends Controller
 {
@@ -18,11 +21,16 @@ class LevelController extends Controller
         return view('level.create');
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request) : RedirectResponse
     {
+        $validated = $request->validate([
+            'level_kode' => 'bail|required|max:10',
+            'level_nama' => 'bail|required|max:100',
+        ]);
+
         LevelModel::create([
-            'level_kode' => $request->levelKode,
-            'level_nama' => $request->levelNama,
+            'level_kode' => $request->level_kode,
+            'level_nama' => $request->level_nama,
         ]);
 
         return redirect('/level');
@@ -59,6 +67,11 @@ class LevelController extends Controller
         $level->delete();
 
         return redirect('/level')->with('success', 'User berhasil dihapus');
+    }
+
+    public function getLevel(){
+        $level = LevelModel::all();
+        return view('user', ['level' => $level]);
     }
 
 }

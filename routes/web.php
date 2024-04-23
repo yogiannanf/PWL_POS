@@ -6,6 +6,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\UserController as ControllersUserController;
 use Illuminate\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request\StorePostRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +39,8 @@ Route::get('/', function () {
 
 // Route::get('/user/hapus/{id}', [ControllersUserController::class, 'hapus']);
 
-Route::get('/kategori/create', [KategoriController::class, 'create']);
-Route::post('/kategori', [KategoriController::class, 'store']);
+// Route::get('/kategori/create', [KategoriController::class, 'create']);
+// Route::post('/kategori', [KategoriController::class, 'store']);
 
 
 // Route::post('/kategori', [KategoriController::class, 'store']);
@@ -53,12 +54,14 @@ Route::get('/delete/{id}', [KategoriController::class, 'destroy'])->name('katego
 
 // JS 6
 Route::get('/m_user', [M_userControllers::class, 'index']);
-Route::get('/m_user/create', [M_userControllers::class, 'create'])->name('user.create');
-Route::post('/m_user/create', [M_userControllers::class, 'getLevel'])->name('user.create');
+Route::get('/m_user/create', [M_userControllers::class, 'create']);
 Route::post('/m_user', [M_userControllers::class, 'store']);
 Route::get('/m_user/edit/{id}', [M_userControllers::class, 'edit'])->name('user.edit');
 Route::put('/m_user/update/{id}', [M_userControllers::class, 'update'])->name('user.update');
 Route::get('/m_user/delete/{id}', [M_userControllers::class, 'delete'])->name('user.delete');
 
-Route::get('/level/create', [LevelController::class, 'create'])->name('level.create');
-Route::post('/level/create', [LevelController::class, 'getLevel'])->name('level.create');
+Route::get('/level/create', [LevelController::class, 'create']);
+Route::post('/level/create', [LevelController::class, 'getLevel']);
+
+Route::get('/kategori/create', [KategoriController::class, 'create']);
+Route::post('/kategori', [KategoriController::class, 'store']);

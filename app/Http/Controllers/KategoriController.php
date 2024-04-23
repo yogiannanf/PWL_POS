@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\KategoriDataTable;
 use App\Models\KategoriModel;
+use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\view;
@@ -59,7 +60,7 @@ class KategoriController extends Controller
 
         $validated = $request->validate([
             'kategori_kode' => 'bail|required|max:100',
-            'kategori_nama' => 'required|max:1000',
+            'kategori_nama' => 'bail|required|max:1000',
         ]);
 
 
