@@ -7,6 +7,7 @@ use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController as ControllersUserController;
 use Illuminate\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\WelcomeController;
 use Illuminate\Http\Request\StorePostRequest;
 
 /*
@@ -69,3 +70,5 @@ Route::post('/kategori', [KategoriController::class, 'store']);
 
 Route::resource('m_user', POSController::class);
 
+//JS 7
+//Route::get('/', [WelcomeController::class, 'index']);
