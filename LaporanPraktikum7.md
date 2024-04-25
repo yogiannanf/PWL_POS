@@ -65,7 +65,7 @@ Jawablah pertanyaan berikut sesuai pemahaman materi di atas
 
     - @extends() : digunakan untuk menentukan bahwa suatu halaman menggunakan layout blade tertentu sebagai kerangka dasarnya. Biasanya digunakan untuk menghubungkan antara layout utama dengan halaman-halaman spesifik.
 
-    - @section() : digunakan untuk menampilkan konten yang telah ditentukan area nya pada fungsi @yield. Misalnya, konten bagian header, konten bagian footer, dsb. 
+    - @section() : digunakan untuk mendefinisikan bagian dari konten yang dapat ditimpa (override) di file blade yang memperluas (extends) layout. Misalnya, konten bagian header, konten bagian footer, dsb.  
 
     - @push() : digunakan untuk menambahkan konten ke dalam sebuah stack (tumpukan) yang dapat ditumpuk dan digunakan nanti. Berguna untuk menambahkan kode ke bagian tertentu dari layout tanpa perlu mengubah file yang memperluas layout. 
 
