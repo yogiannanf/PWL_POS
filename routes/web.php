@@ -7,7 +7,7 @@ use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController as ControllersUserController;
 use Illuminate\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Http\Request\StorePostRequest;
 
 /*
@@ -21,9 +21,9 @@ use Illuminate\Http\Request\StorePostRequest;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/level', [LevelController::class, 'index']);
 
@@ -71,4 +71,4 @@ Route::post('/kategori', [KategoriController::class, 'store']);
 Route::resource('m_user', POSController::class);
 
 //JS 7
-//Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index']);
