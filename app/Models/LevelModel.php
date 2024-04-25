@@ -4,39 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * @mixin IdeHelperLevel
- */
 class LevelModel extends Model
 {
     use HasFactory;
-    protected $table = 'm_level';
-    protected $primaryKey = 'level_id';
-    protected $guarded = [];
-    public function user()
+    protected $table = 'm_level'; //Mendefinisikan nama tabel yang digunakan oleh model ini
+    protected $primaryKey = 'level_id'; //Mendefinisikan primary key dari tabel yang digunakan
+
+    protected $fillable = ['level_id', 'level_kode', 'level_nama'];
+    public function level(): BelongsTo
     {
-        return $this->hasMany(UserModel::class, 'level_id', 'level_id');
+        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
 }
-
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Database\Eloquent\Relations\HasMany;
-
-// class LevelModel extends Model
-// {
-//     use HasFactory;
-
-//     protected $table = 'm_level';
-//     protected $primaryKey = 'level_id';
-
-//     protected $guarded = [];
-
-//     public function user()
-//     {
-//         return $this->hasMany(UserModel::class, 'level_id', 'level_id');
-//     }
-
-//     protected $fillable = ['level_kode', 'level_nama'];
-// }

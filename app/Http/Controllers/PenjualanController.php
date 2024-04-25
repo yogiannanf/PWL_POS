@@ -145,21 +145,22 @@ class PenjualanController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'userId' => 'required|integer|exists:m_user,user_id',
-            'pembeli'           => 'required|string|max:100',
-            'penjualanKode' => 'required|min:5|unique:t_penjualan,penjualan_kode,' . $id . ',penjualan_id',
-            'penjualanTanggal'  => 'required'
+            'user_id' => 'required|integer|exists:m_user,user_id', // Sesuaikan dengan kebutuhan Anda
+            'pembeli' => 'required|string|max:100',
+            'penjualan_kode' => 'required|min:5|unique:t_penjualan,penjualan_kode,' . $id . ',penjualan_id',
+            'penjualan_tanggal' => 'required|date_format:Y-m-d\TH:i' // Sesuaikan dengan format yang diharapkan
         ]);
 
         PenjualanModel::find($id)->update([
-            'user_id'           => $request->userId,
-            'pembeli'           => $request->pembeli,
-            'penjualan_kode'    => $request->penjualanKode,
-            'penjualan_tanggal' => $request->penjualanTanggal
+            'user_id' => $request->user_id,
+            'pembeli' => $request->pembeli,
+            'penjualan_kode' => $request->penjualan_kode,
+            'penjualan_tanggal' => $request->penjualan_tanggal
         ]);
 
-        return redirect('/penjualan')->with('success', 'Data transaksi penjualan berhasil diubah');
+    return redirect('/penjualan')->with('success', 'Data transaksi penjualan berhasil diubah');
     }
+
 
     /**
      * Remove the specified resource from storage.

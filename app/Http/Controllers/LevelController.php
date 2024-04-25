@@ -63,9 +63,23 @@ class LevelController extends Controller
             'title' => 'Tambah level baru'
         ];
 
-        // $level = LevelModel::all(); //ambil data level untuk ditampilkan di form
+        $level = LevelModel::all(); //ambil data level untuk ditampilkan di form
         $activeMenu = 'level'; //set menu yang sedang aktif
-        return view('level.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
+        return view('level.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level,'activeMenu' => $activeMenu]);
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'level_kode' => 'required|unique:t_penjualan,penjualan_kode|min:2',
+            'level_nama' => 'required|string|max:100'
+        ]);
+
+        LevelModel::create([
+            'level_kode'           => $request->level_kode,
+            'level_nama' =>$request->level_nama
+        ]);
+
+        return redirect('/level')->with('success', 'Data level berhasil disimpan');
     }
 
     //menampilkan detail level
