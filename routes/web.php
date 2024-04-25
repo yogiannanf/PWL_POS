@@ -35,5 +35,5 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('/{id}', [UserController::class, 'show']); //menampilkan detail user
     Route::get('/{id}/edit', [UserController::class, 'edit']); //menampilkan halaman form edit user
     Route::put('/{id}', [UserController::class, 'update']); //menyimpan perubahan data
-    Route::delete('/{id}', [UserController::class, 'delete']); //menghapus data user
+    Route::delete('/{id}', [UserController::class, 'destroy']); //menghapus data user
 });
