@@ -178,7 +178,7 @@ class PenjualanController extends Controller
             return redirect('/penjualan')->with('success', 'Data transaksi penjualan berhasil dihapus');
         } catch (\Illuminate\Database\QueryException $e) {
             //Jika terjadi error ketika menghapus data, redirect kembali ke halaman dengan membawa pesan error
-            return redirect('/penjualan')->with('error', 'Data transaksi penjualan gagal dihapus karenamasih terdapat tabel lain yang terkai dengan data ini');
+            return redirect('/penjualan')->with('error', 'Data transaksi penjualan gagal dihapus karenamasih terdapat tabel lain yang terkait dengan data ini');
         }
     }
 }
