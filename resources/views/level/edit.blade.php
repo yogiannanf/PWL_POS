@@ -1,34 +1,56 @@
-@extends('layout.app')
-
-{{--Customize layout sections--}}
-
-@section('subtitle', 'Level')
-@section('content_header_title', 'Level')
-@section('content_header_subtitle', 'Edit')
+@extends('layouts.template')
 
 @section('content')
-    <div class="container">
-        <div class="card">
-            <div class="card-header">Edit Level</div>
-            <div class="card-body">
-                <a class="btn btn-secondary" href="{{url('/level')}}">Kembali</a>
-                <form method="post" action="{{route('level.update', $level->level_id)}}">
-                    @csrf
-                    @method('PUT')
-
-                    <div class="form-group">
-                        <label for="kategori_kode">Kode Level</label>
-                        <input type="text" class="form-control" id="kodeLevel" name="kodeLevel" value="{{$data->level_kode}}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="kategori_nama">Nama Level</label>
-                        <input type="text" class="form-control" id="namaLevel" name="namaLevel" value="{{$data->level_nama}}">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </div>
-        </div>
+<div class="card card-outline card-primary">
+    <div class="card-header">
+        <h3 class="card-title">{{ $page->title }}</h3>
+        <div class="card-tools"></div>
     </div>
+    <div class="card-body"> 
+        @empty($level)
+            <div class="alert alert-danger alert-dismissible">
+                <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5> 
+                Data yang Anda cari tidak ditemukan.
+            </div>
+            <a href="{{ url('level') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
+        @else
+            <form method="POST" action="{{ url('/level/'.$level->level_id) }}" class="form-horizontal">
+                @csrf
+                {!! method_field('PUT') !!} <!-- Add this line for edit process requiring PUT method -->
+                
+                <div class="form-group row">
+                    <label class="col-1 control-label col-form-label">Kode</label>
+                    <div class="col-11">
+                        <input type="text" class="form-control" id="level_kode" name="level_kode" value="{{ old('level_kode', $level->level_kode) }}" required>
+                        @error('level_kode')
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-1 control-label col-form-label">Nama</label>
+                    <div class="col-11">
+                        <input type="text" class="form-control" id="level_nama" name="level_nama" value="{{ old('level_nama', $level->level_nama) }}" required>
+                        @error('level_nama')
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-1 control-label col-form-label"></label>
+                    <div class="col-11">
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                        <a class="btn btn-sm btn-default ml-1" href="{{ url('level') }}">Kembali</a>
+                    </div>
+                </div>
+            </form> 
+        @endempty
+    </div>
+</div> 
 @endsection
+
+@push('css') 
+@endpush 
+@push('js')
+@endpush
