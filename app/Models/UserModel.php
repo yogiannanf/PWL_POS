@@ -8,13 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * @mixin IdeHelperUser
  */
-class UserModel extends Authenticatable
+class UserModel extends Authenticatable implements JWTSubject
 {
-    use HasFactory;
+
+    public function getJWTIdentifier()
+   {
+    return $this->getKey();
+   }
+
+   public function getJWTCustomClaims()
+   {
+    return [];
+   }
 
     protected $table = 'm_user';
     protected $primaryKey = "user_id";
