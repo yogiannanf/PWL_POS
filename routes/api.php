@@ -23,23 +23,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-// CRUD transaksi
-//Route::get('transaksi', [PenjualanController::class, 'index']);
-// Route::post('transaksi', PenjualanController::class)->name('transaksi');
-// Route::get('transaksi', function () {
-//     $transaksi = PenjualanModel::all();
-
-//     return response()->json([
-//         'success' => true,
-//         'data' => $transaksi,
-//     ]);
-// });
-
-// //Route::get('transaksi/{transaksi}', [PenjualanController::class, 'show']);
-// Route::put('transaksi/{transaksi}', [PenjualanController::class, 'update']);
-// Route::delete('transaksi/{transaksi}', [PenjualanController::class, 'destroy']);
-
 Route::post('/register1', App\Http\Controllers\Api\RegisterController::class)->name('register1');
 // Route::post('/register', App\Http\Controllers\Api\RegisterController::class)->name('register');
 Route::post('/login', App\Http\Controllers\Api\LoginController::class)->name('login');
