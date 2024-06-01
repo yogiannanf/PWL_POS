@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 //use Illuminate\Http\Request\StorePostRequest;
 
+use App\Http\Controllers\FileUploadController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -121,3 +124,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('manager', ManagerController::class);
     });
 });
+
+
+Route::get('/file-upload', [FileUploadController::class, 'fileUpload']);
+Route::post('/file-upload', [FileUploadController::class, 'prosesFileUpload']);
